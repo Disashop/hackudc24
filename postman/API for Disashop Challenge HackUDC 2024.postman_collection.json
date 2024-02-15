@@ -1,0 +1,1035 @@
+{
+	"info": {
+		"_postman_id": "805cd2b1-1c2d-4c97-a9bd-0df8ef325d4f",
+		"name": "API for Disashop Challenge HackUDC 2024",
+		"description": "This API provides support for the Disashop challenge of HackUDC 2024. The API allows fetching a generic form definition, as well as the subsequent creation of data based on those forms, and retrieval of that data.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1779114",
+		"_collection_link": "https://warped-capsule-970564.postman.co/workspace/HackUDC~27c0cf4e-807e-4cb4-ab77-9ccc1e05f1b7/collection/1779114-805cd2b1-1c2d-4c97-a9bd-0df8ef325d4f?action=share&source=collection_link&creator=1779114"
+	},
+	"item": [
+		{
+			"name": "Form Types",
+			"item": [
+				{
+					"name": "Get available form types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=utf-8"
+							},
+							{
+								"key": "mock",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/formTypes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"formTypes"
+							]
+						},
+						"description": "Returns a list of available form types."
+					},
+					"response": [
+						{
+							"name": "List of form types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "mock",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"form_type_id\": 1,\n    \"form_type_name\": \"Registro de una Raspberry PI\"\n  },\n  {\n    \"form_type_id\": 2,\n    \"form_type_name\": \"Reportar una incidencia\"\n  },\n  {\n    \"form_type_id\": 3,\n    \"form_type_name\": \"Dar de baja mi dispositivo\"\n  }\n]"
+						},
+						{
+							"name": "500 response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "error",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes"
+									],
+									"query": [
+										{
+											"key": "error",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get form type",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=utf-8"
+							},
+							{
+								"key": "form_type_id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/formTypes/:form_type_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"formTypes",
+								":form_type_id"
+							],
+							"variable": [
+								{
+									"key": "form_type_id",
+									"value": "3",
+									"description": "(Required) Unique identifier of a form type."
+								}
+							]
+						},
+						"description": "Returns a specific form type."
+					},
+					"response": [
+						{
+							"name": "Form type 1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_type_id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes/:form_type_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes",
+										":form_type_id"
+									],
+									"variable": [
+										{
+											"key": "form_type_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_type_id\": 1,\n  \"form_type_name\": \"Registro de una Raspberry PI\",\n  \"title_field\": {\n    \"field_description\": \"Nombre de su dispositivo\"\n  },\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"Numero de serie\",\n      \"field_type\": \"string\",\n      \"field_order\": 1,\n      \"field_description\": \"Lo puede encontrar detrás de la caja\",\n      \"field_required\": true,\n      \"field_readonly\": false,\n      \"field_validations\": {\n        \"min_length\": \"16\",\n        \"max_length\": \"24\"\n      }\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"RAM\",\n      \"field_type\": \"number\",\n      \"field_order\": 2,\n      \"field_description\": \"Cuanta memoria RAM posee su dispositivo\",\n      \"field_required\": true,\n      \"field_readonly\": false,\n      \"field_default_value\": \"8\",\n      \"field_validations\": {\n        \"options\": [\n          \"1\",\n          \"2\",\n          \"4\",\n          \"8\",\n          \"16\",\n          \"+16\"\n        ]\n      }\n    },\n    {\n      \"field_id\": 3,\n      \"field_name\": \"Periféricos\",\n      \"field_type\": \"string\",\n      \"field_order\": 3,\n      \"field_description\": \"Seleccione los periféricos que tiene su dispositivo\",\n      \"field_required\": false,\n      \"field_readonly\": false,\n      \"field_validations\": {\n        \"allow_multiple_options\": true,\n        \"options\": [\n          \"Carcasa\",\n          \"Cargador\",\n          \"Disipador de calor\",\n          \"Bateria\",\n          \"Camara Web\",\n          \"Sensor termico\",\n          \"Otros\"\n        ]\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form type 2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_type_id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes/:form_type_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes",
+										":form_type_id"
+									],
+									"variable": [
+										{
+											"key": "form_type_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_type_id\": 2,\n  \"form_type_name\": \"Reportar una incidencia\",\n  \"title_field\": {\n    \"field_description\": \"Describa brevemente su problema\"\n  },\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"Que dispositivo le ha generado el problema\",\n      \"field_type\": \"string\",\n      \"field_order\": 1,\n      \"field_description\": \"Indique que versión de dispostivo es la que ha generado el problema\",\n      \"field_required\": true,\n      \"field_readonly\": false,\n      \"field_validations\": {\n        \"options\": [\n          \"Raspberry Pi 1 modelo A\",\n          \"Raspberry Pi 1 modelo B\",\n          \"Raspberry Pi 1 modelo B+\",\n          \"Raspberry Pi 2 modelo B\",\n          \"Raspberry Pi 3 modelo B\",\n          \"Raspberry Pi 3 modelo B+\",\n          \"Raspberry Pi 3 modelo A\",\n          \"Raspberry Pi 4 modelo B\",\n          \"Raspberry Pi 400\",\n          \"Raspberry Pi 5\"\n        ]\n      }\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"Detalle el problema en profundidad\",\n      \"field_type\": \"string\",\n      \"field_order\": 2,\n      \"field_description\": \"Indiquenos todos los datos de los que disponga para que podamos ayudarle\",\n      \"field_required\": true,\n      \"field_validations\": {\n        \"min_length\": \"10\"\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form type 3",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_type_id",
+										"value": "3",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes/:form_type_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes",
+										":form_type_id"
+									],
+									"variable": [
+										{
+											"key": "form_type_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_type_id\": 3,\n  \"form_type_name\": \"Dar de baja mi dispositivo\",\n  \"title_field\": {\n    \"field_description\": \"Indique el número de serie del dispositivo\"\n  },\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"Que le motiva a dejar este servicio\",\n      \"field_type\": \"string\",\n      \"field_order\": 1,\n      \"field_description\": \"Esta información nos ayuda a mejorar\",\n      \"field_required\": false\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"Aclaración\",\n      \"field_type\": \"string\",\n      \"field_order\": 2,\n      \"field_description\": \"\",\n      \"field_required\": false,\n      \"field_readonly\": true,\n      \"field_default_value\": \"Está rechazando cualquier soporte futuro\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "form_type_id",
+										"value": "4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes/:form_type_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes",
+										":form_type_id"
+									],
+									"variable": [
+										{
+											"key": "form_type_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "error",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/formTypes/:form_type_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"formTypes",
+										":form_type_id"
+									],
+									"variable": [
+										{
+											"key": "form_type_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"description": "Endpoints related to form types"
+		},
+		{
+			"name": "Forms",
+			"item": [
+				{
+					"name": "Get covered forms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=utf-8"
+							},
+							{
+								"key": "mock",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/forms?form_type_id=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"forms"
+							],
+							"query": [
+								{
+									"key": "form_type_id",
+									"value": "<integer>",
+									"description": "Unique identifier of a form type."
+								}
+							]
+						},
+						"description": "Returns a list of all created forms, optionally filtered by form type."
+					},
+					"response": [
+						{
+							"name": "List of forms",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "mock",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms?form_type_id=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms"
+									],
+									"query": [
+										{
+											"key": "form_type_id",
+											"value": "<integer>",
+											"description": "Unique identifier of a form type."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"form_id\": 1,\n    \"title_field\": \"Raspberry PI 5\",\n    \"form_type_id\": 1\n  },{\n    \"form_id\": 2,\n    \"title_field\": \"Raspberry PI 3\",\n    \"form_type_id\": 1\n  },{\n    \"form_id\": 3,\n    \"title_field\": \"Raspberry PI\",\n    \"form_type_id\": 1\n  },\n  {\n    \"form_id\": 4,\n    \"title_field\": \"Problema en el disipador\",\n    \"form_type_id\": 2\n  },\n  {\n    \"form_id\": 5,\n    \"title_field\": \"RAB155845222554445\",\n    \"form_type_id\": 3\n  },\n  {\n    \"form_id\": 6,\n    \"title_field\": \"El puerto HDMI no funciona\",\n    \"form_type_id\": 2\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8"
+							},
+							{
+								"key": "error",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"form_type_id\": \"<integer>\",\n  \"title_field\": \"<string>\",\n  \"form_fields\": [\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    },\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/forms",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"forms"
+							]
+						},
+						"description": "Creates a new form."
+					},
+					"response": [
+						{
+							"name": "Form created successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "mock",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"form_type_id\": \"<integer>\",\n  \"title_field\": \"<string>\",\n  \"form_fields\": [\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    },\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "error",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"form_type_id\": \"<integer>\",\n  \"title_field\": \"<string>\",\n  \"form_fields\": [\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    },\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "error",
+										"value": "1",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"form_type_id\": \"<integer>\",\n  \"title_field\": \"<string>\",\n  \"form_fields\": [\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    },\n    {\n      \"field_value\": \"<string>\",\n      \"field_id\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get form",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=utf-8"
+							},
+							{
+								"key": "form_id",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"forms",
+								":form_id"
+							],
+							"variable": [
+								{
+									"key": "form_id",
+									"value": "1",
+									"description": "(Required) Unique identifier of a form."
+								}
+							]
+						},
+						"description": "Returns a specific form."
+					},
+					"response": [
+						{
+							"name": "Form 1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_id\": 1,\n  \"form_type_id\": 1,\n  \"title_field\": \"Raspberry PI 5\",\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"12324987465321565\"\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"8\"\n    },\n    {\n      \"field_id\": 3,\n      \"field_name\": \"Carcasa,Cargador\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form 2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_id\": 2,\n  \"form_type_id\": 1,\n  \"title_field\": \"Raspberry PI 3\",  \n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"BBFAS22344322343434\"\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"16\"\n    },\n    {\n      \"field_id\": 3,\n      \"field_name\": \"Disipador de calor\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form 3",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_id",
+										"value": "3",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\n  \"form_id\": 3,\n  \"form_type_id\": 1,\n  \"title_field\": \"Raspberry PI\",\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"7798qweqw88885585\"\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"16\"\n    },\n    {\n      \"field_id\": 3,\n      \"field_name\": \"Bateria\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form 4",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_id",
+										"value": "4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_id\": 4,\n  \"form_type_id\": 2,\n  \"title_field\": \"Problema en el disipador\",\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"Raspberry Pi 3 modelo B+\"\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"El disipador de calor no arranca cuando arranco el dispositivo. Por lo tanto, despues de unos minutos se apaga al sobrecalentarse\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form 5",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_id",
+										"value": "5",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_id\": 5,\n  \"form_type_id\": 3,\n  \"title_field\": \"RAB155845222554445\",\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"El soporte no me es de utilidad\"\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"Está rechazando cualquier soporte futuro\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Form 6",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=utf-8"
+									},
+									{
+										"key": "form_id",
+										"value": "6",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"form_id\": 6,\n  \"form_type_id\": 2,\n  \"title_field\": \"El puerto HDMI no funciona\",\n  \"form_fields\": [\n    {\n      \"field_id\": 1,\n      \"field_name\": \"Raspberry Pi 1 modelo A\"\n    },\n    {\n      \"field_id\": 2,\n      \"field_name\": \"Al conectar el puerto HDMI a una pantalla, se ve la imagen en la misma. Pasados unos minutos, comienza a parpadear y en la pantalla se pierde el color\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "form_id",
+										"value": "7",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "error",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/forms/:form_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forms",
+										":form_id"
+									],
+									"variable": [
+										{
+											"key": "form_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"description": "Endpoints related to forms"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
