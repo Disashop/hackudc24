@@ -110,8 +110,7 @@ dependency:
 
 ### Available Field Types
 
-- **text:** Allows input of short text.
-- **textarea:** Allows input of a longer text.
+- **text:** Allows input of text.
 - **number:** Allows input of numeric values.
 - **date:** Allows selection of a date.
 - **selection:** Presents a list of options for selection.
