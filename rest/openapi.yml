@@ -41,10 +41,6 @@ paths:
                       description: 'Name of the form type.'
                       type: string
                       example: Raspberry Registration
-                    form_type_description:
-                      description: 'Description of the form type.'
-                      type: string
-                      example: 'This form type is used to register information about Raspberry Pi devices.'
         '500':
           $ref: '../#/components/responses/500InternalServerError'
   /api/v1/formTypes/{form_type_id}:
@@ -84,6 +80,10 @@ paths:
                     description: 'Name of the form type.'
                     type: string
                     example: Raspberry Registration
+                  form_type_description:
+                    description: 'Description of the form type.'
+                    type: string
+                    example: 'This form type is used to register information about Raspberry Pi devices.'
                   title_field:
                     description: 'Title field of the form type.'
                     type: object
@@ -141,7 +141,7 @@ paths:
                           type: string
                           example: Serial Number
                         field_type:
-                          description: 'Type of the field.'
+                          description: 'Type of the field (text|number|date|select|checkbox).'
                           type: string
                           example: text
                         field_order:
