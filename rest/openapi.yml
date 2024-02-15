@@ -9,7 +9,7 @@ tags:
   - name: Forms
     description: Endpoints related to forms
 servers:
-  - url: https://48fcef17-883f-49d8-8d0f-6a9a559d107b.mock.pstmn.io
+  - url: https://131b6ea8-87b5-4141-969d-29d7f4ad6b58.mock.pstmn.io
     description: Mock Server   
 paths:
   /api/v1/formTypes:
@@ -80,6 +80,10 @@ paths:
                     description: 'Name of the form type.'
                     type: string
                     example: Raspberry Registration
+                  form_type_description:
+                    description: 'Description of the form type.'
+                    type: string
+                    example: 'This form type is used to register information about Raspberry Pi devices.'
                   title_field:
                     description: 'Title field of the form type.'
                     type: object
@@ -89,8 +93,33 @@ paths:
                       field_description:
                         description: 'Description of the field.'
                         type: string
-                        example: 'Description of the field'                         
-                  form_fields: 
+                        example: 'Description of the field'
+                  form_groups:
+                    description: 'List of form groups.'
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - group_id
+                        - group_name
+                      properties:
+                        group_id:
+                          description: 'Unique identifier of a form group.'
+                          type: string
+                          example: 'basic_info'
+                        group_name:
+                          description: 'Name of the group.'
+                          type: string
+                          example: Basic information
+                        group_description:
+                          description: 'Description of the group.'
+                          type: string
+                          example: Basic information about the device you are registering
+                        group_order:
+                          description: 'Order of the group.'
+                          type: integer
+                          example: 1
+                  form_fields:
                     description: 'List of fields of the form type.'
                     type: array
                     items:
@@ -112,7 +141,7 @@ paths:
                           type: string
                           example: Serial Number
                         field_type:
-                          description: 'Type of the field.'
+                          description: 'Type of the field (text|number|date|select|checkbox).'
                           type: string
                           example: text
                         field_order:
@@ -126,15 +155,30 @@ paths:
                         field_description:
                           description: 'Description of the field.'
                           type: string
-                          example: 'Description of the field'  
+                          example: 'Description of the field'
                         field_readonly:
                           description: 'Indicates if the field is readonly.'
                           type: boolean
                           example: false
                         field_default_value:
                           description: 'Default value of the field.'
+                          example: 'Default value (can be any basic type)'
+                        field_group:
+                          description: 'Id of the group this field belongs to, if any'
                           type: string
-                          example: 'Default value'
+                          example: 'basic_info'
+                        field_dependent_on:
+                          type: object
+                          description: 'Field that this field depends on. This filed should only be visible if the dependent field has the specified value.'
+                          properties:
+                            field_id:
+                              description: 'Unique identifier of the field.'
+                              type: integer
+                              format: int32
+                              example: 1
+                            field_value:
+                              description: 'Value of the field.'
+                              example: '123123322132145'
                         field_validations:
                           description: 'List of validations of the field.'
                           type: object
@@ -308,17 +352,17 @@ paths:
                       type: object
                       required:
                         - field_id
-                        - field_name
+                        - field_value
                       properties:
                         field_id:
                           description: 'Unique identifier of a field.'
                           type: integer
                           format: int32
                           example: 1
-                        field_name:
-                          description: 'Name of the field.'
+                        field_value:
+                          description: 'Value of the field.'
                           type: string
-                          example: Serial Number
+                          example: '123123322132145'
         '404':
           $ref: '#/components/responses/404NotFound'
         '500':
