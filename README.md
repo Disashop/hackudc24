@@ -20,16 +20,6 @@ The API contains the following methods:
 
 Developers can use this API to build applications that require dynamic form management, such as mobile apps that allow users to complete various types of forms.
 
-# Generate the Complete OpenAPI File
-
-To generate the complete Swagger file as a single unified file, you need to install swagger-cli:
-```
-npm install -g swagger-cli
-```
-Then, by executing the following command, the final OpenAPI file is built:
-```
-swagger-cli bundle openapi.yml --outfile generated-openapi.yaml --type yaml
-```
 
 # Mock server
 
