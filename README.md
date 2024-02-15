@@ -31,7 +31,7 @@ or extend the API if they wish to do so, as long as the basic functionality is m
 
 Regarding the provided mock, it has the following characteristics:
 
-- It is deployed at https://48fcef17-883f-49d8-8d0f-6a9a559d107b.mock.pstmn.io.
+- It is deployed at https://131b6ea8-87b5-4141-969d-29d7f4ad6b58.mock.pstmn.io.
 - It simulates being a Raspberry device support system.
 - To invoke the mock and obtain the different configured responses, specific headers must be used.
   The configuration of these headers can be obtained by downloading the Postman collection attached

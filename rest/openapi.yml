@@ -9,7 +9,7 @@ tags:
   - name: Forms
     description: Endpoints related to forms
 servers:
-  - url: https://48fcef17-883f-49d8-8d0f-6a9a559d107b.mock.pstmn.io
+  - url: https://131b6ea8-87b5-4141-969d-29d7f4ad6b58.mock.pstmn.io
     description: Mock Server   
 paths:
   /api/v1/formTypes:
