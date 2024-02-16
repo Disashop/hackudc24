@@ -128,7 +128,7 @@ triggers the dependency:
 - **text:** Allows input of text.
 - **number:** Allows input of numeric values.
 - **date:** Allows selection of a date.
-- **selection:** Presents a list of options for selection.
+- **select:** Presents a list of options for selection.
 - **checkbox:** Allows selection of boolean values.
 
 These field types cover a variety of data input and selection needs within the form, providing
