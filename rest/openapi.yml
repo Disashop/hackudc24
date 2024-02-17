@@ -9,8 +9,8 @@ tags:
   - name: Forms
     description: Endpoints related to forms
 servers:
-  - url: https://131b6ea8-87b5-4141-969d-29d7f4ad6b58.mock.pstmn.io
-    description: Mock Server   
+  - url: https://c48b6359-2b3c-4ab5-829b-32afa3da6640.mock.pstmn.io
+    description: Mock Server
 paths:
   /api/v1/formTypes:
     get:
@@ -20,7 +20,7 @@ paths:
       tags:
         - Form Types
       responses:
-        '200':
+        "200":
           description: List of form types
           content:
             application/json;charset=utf-8:
@@ -33,16 +33,16 @@ paths:
                     - form_type_name
                   properties:
                     form_type_id:
-                      description: 'Unique identifier of a form type.'
+                      description: "Unique identifier of a form type."
                       type: integer
                       format: int32
                       example: 1
                     form_type_name:
-                      description: 'Name of the form type.'
+                      description: "Name of the form type."
                       type: string
                       example: Raspberry Registration
-        '500':
-          $ref: '../#/components/responses/500InternalServerError'
+        "500":
+          $ref: "../#/components/responses/500InternalServerError"
   /api/v1/formTypes/{form_type_id}:
     get:
       operationId: getFormTypeDetail
@@ -53,14 +53,14 @@ paths:
       parameters:
         - in: path
           name: form_type_id
-          description: 'Unique identifier of a form type.'
+          description: "Unique identifier of a form type."
           required: true
           schema:
             type: integer
             format: int32
             example: 1
       responses:
-        '200':
+        "200":
           description: Form type
           content:
             application/json;charset=utf-8:
@@ -72,30 +72,30 @@ paths:
                   - title_field
                 properties:
                   form_type_id:
-                    description: 'Unique identifier of a form type.'
+                    description: "Unique identifier of a form type."
                     type: integer
                     format: int32
                     example: 1
                   form_type_name:
-                    description: 'Name of the form type.'
+                    description: "Name of the form type."
                     type: string
                     example: Raspberry Registration
                   form_type_description:
-                    description: 'Description of the form type.'
+                    description: "Description of the form type."
                     type: string
-                    example: 'This form type is used to register information about Raspberry Pi devices.'
+                    example: "This form type is used to register information about Raspberry Pi devices."
                   title_field:
-                    description: 'Title field of the form type.'
+                    description: "Title field of the form type."
                     type: object
                     required:
                       - field_description
                     properties:
                       field_description:
-                        description: 'Description of the field.'
+                        description: "Description of the field."
                         type: string
-                        example: 'Description of the field'
+                        example: "Description of the field"
                   form_groups:
-                    description: 'List of form groups.'
+                    description: "List of form groups."
                     type: array
                     items:
                       type: object
@@ -104,23 +104,23 @@ paths:
                         - group_name
                       properties:
                         group_id:
-                          description: 'Unique identifier of a form group.'
+                          description: "Unique identifier of a form group."
                           type: string
-                          example: 'basic_info'
+                          example: "basic_info"
                         group_name:
-                          description: 'Name of the group.'
+                          description: "Name of the group."
                           type: string
                           example: Basic information
                         group_description:
-                          description: 'Description of the group.'
+                          description: "Description of the group."
                           type: string
                           example: Basic information about the device you are registering
                         group_order:
-                          description: 'Order of the group.'
+                          description: "Order of the group."
                           type: integer
                           example: 1
                   form_fields:
-                    description: 'List of fields of the form type.'
+                    description: "List of fields of the form type."
                     type: array
                     items:
                       type: object
@@ -132,84 +132,84 @@ paths:
                         - field_description
                       properties:
                         field_id:
-                          description: 'Unique identifier of a field.'
+                          description: "Unique identifier of a field."
                           type: integer
                           format: int32
                           example: 1
                         field_name:
-                          description: 'Name of the field.'
+                          description: "Name of the field."
                           type: string
                           example: Serial Number
                         field_type:
-                          description: 'Type of the field (text|number|date|select|checkbox).'
+                          description: "Type of the field (text|number|date|select|checkbox)."
                           type: string
                           example: text
                         field_order:
-                          description: 'Order of the field.'
+                          description: "Order of the field."
                           type: integer
                           example: 1
                         field_required:
-                          description: 'Indicates if the field is required.'
+                          description: "Indicates if the field is required."
                           type: boolean
                           example: true
                         field_description:
-                          description: 'Description of the field.'
+                          description: "Description of the field."
                           type: string
-                          example: 'Description of the field'
+                          example: "Description of the field"
                         field_readonly:
-                          description: 'Indicates if the field is readonly.'
+                          description: "Indicates if the field is readonly."
                           type: boolean
                           example: false
                         field_default_value:
-                          description: 'Default value of the field.'
-                          example: 'Default value (can be any basic type)'
+                          description: "Default value of the field."
+                          example: "Default value (can be any basic type)"
                         field_group:
-                          description: 'Id of the group this field belongs to, if any'
+                          description: "Id of the group this field belongs to, if any"
                           type: string
-                          example: 'basic_info'
+                          example: "basic_info"
                         field_dependent_on:
                           type: object
-                          description: 'Field that this field depends on. This filed should only be visible if the dependent field has the specified value.'
+                          description: "Field that this field depends on. This filed should only be visible if the dependent field has the specified value."
                           properties:
                             field_id:
-                              description: 'Unique identifier of the field.'
+                              description: "Unique identifier of the field."
                               type: integer
                               format: int32
                               example: 1
                             field_value:
-                              description: 'Value of the field.'
-                              example: '123123322132145'
+                              description: "Value of the field."
+                              example: "123123322132145"
                         field_validations:
-                          description: 'List of validations of the field.'
+                          description: "List of validations of the field."
                           type: object
                           properties:
                             min_length:
-                              description: 'Minimum length of the field.'
+                              description: "Minimum length of the field."
                               type: integer
                               example: 1
                             max_length:
-                              description: 'Maximum length of the field.'
+                              description: "Maximum length of the field."
                               type: integer
                               example: 100
                             format:
-                              description: 'Format of the field.'
+                              description: "Format of the field."
                               type: string
-                              example: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+                              example: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
                             allow_multiple_options:
-                              description: 'Indicates if the field allows multiple options.'
+                              description: "Indicates if the field allows multiple options."
                               type: boolean
-                              example: true  
+                              example: true
                             options:
-                              description: 'List of options of the field.'
+                              description: "List of options of the field."
                               type: array
                               items:
                                 type: string
-                                example: 'Option 1'
-        '404':
-          $ref: '#/components/responses/404NotFound'
-        '500':
-          $ref: '#/components/responses/500InternalServerError'
-  /api/v1/forms: 
+                                example: "Option 1"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "500":
+          $ref: "#/components/responses/500InternalServerError"
+  /api/v1/forms:
     get:
       operationId: getForms
       summary: Get covered forms
@@ -219,13 +219,13 @@ paths:
       parameters:
         - in: query
           name: form_type_id
-          description: 'Unique identifier of a form type.'
+          description: "Unique identifier of a form type."
           schema:
             type: integer
             format: int32
             example: 1
       responses:
-        '200':
+        "200":
           description: List of forms
           content:
             application/json;charset=utf-8:
@@ -239,16 +239,16 @@ paths:
                     - form_type_id
                   properties:
                     form_id:
-                      description: 'Unique identifier of a form.'
+                      description: "Unique identifier of a form."
                       type: integer
                       format: int32
                       example: 1
                     title_field:
-                      description: 'Title of the form.'
+                      description: "Title of the form."
                       type: string
                       example: Raspberry Pi 5
                     form_type_id:
-                      description: 'Unique identifier of a form type.'
+                      description: "Unique identifier of a form type."
                       type: integer
                       format: int32
                       example: 1
@@ -269,16 +269,16 @@ paths:
                 - form_fields
               properties:
                 form_type_id:
-                  description: 'Unique identifier of a form type.'
+                  description: "Unique identifier of a form type."
                   type: integer
                   format: int32
                   example: 1
                 title_field:
-                  description: 'Title field of the form.'
+                  description: "Title field of the form."
                   type: string
-                  example: 'Raspberry Pi 5'
+                  example: "Raspberry Pi 5"
                 form_fields:
-                  description: 'List of fields of the form.'
+                  description: "List of fields of the form."
                   type: array
                   items:
                     type: object
@@ -287,21 +287,21 @@ paths:
                       - field_id
                     properties:
                       field_value:
-                        description: 'Value of the field.'
+                        description: "Value of the field."
                         type: string
-                        example: '123123322132145'
+                        example: "123123322132145"
                       field_id:
-                        description: 'Unique identifier of a field.'
+                        description: "Unique identifier of a field."
                         type: integer
                         format: int32
                         example: 1
       responses:
-        '201':
+        "201":
           description: Form created successfully
-        '400':
-          $ref: '#/components/responses/400BadRequest'
-        '500':
-          $ref: '#/components/responses/500InternalServerError'
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "500":
+          $ref: "#/components/responses/500InternalServerError"
   /api/v1/forms/{form_id}:
     get:
       operationId: getForm
@@ -312,14 +312,14 @@ paths:
       parameters:
         - in: path
           name: form_id
-          description: 'Unique identifier of a form.'
+          description: "Unique identifier of a form."
           required: true
           schema:
             type: integer
             format: int32
             example: 1
       responses:
-        '200':
+        "200":
           description: Form
           content:
             application/json;charset=utf-8:
@@ -332,21 +332,21 @@ paths:
                   - form_fields
                 properties:
                   form_id:
-                    description: 'Unique identifier of a form.'
+                    description: "Unique identifier of a form."
                     type: integer
                     format: int32
                     example: 1
                   form_type_id:
-                    description: 'Unique identifier of a form type.'
+                    description: "Unique identifier of a form type."
                     type: integer
                     format: int32
-                    example: 1                    
+                    example: 1
                   title_field:
-                    description: 'Title field of the form.'
+                    description: "Title field of the form."
                     type: string
-                    example: 'Raspberry Pi 5'
+                    example: "Raspberry Pi 5"
                   form_fields:
-                    description: 'List of fields of the form.'
+                    description: "List of fields of the form."
                     type: array
                     items:
                       type: object
@@ -355,23 +355,23 @@ paths:
                         - field_value
                       properties:
                         field_id:
-                          description: 'Unique identifier of a field.'
+                          description: "Unique identifier of a field."
                           type: integer
                           format: int32
                           example: 1
                         field_value:
-                          description: 'Value of the field.'
+                          description: "Value of the field."
                           type: string
-                          example: '123123322132145'
-        '404':
-          $ref: '#/components/responses/404NotFound'
-        '500':
-          $ref: '#/components/responses/500InternalServerError'  
+                          example: "123123322132145"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "500":
+          $ref: "#/components/responses/500InternalServerError"
 components:
   responses:
     400BadRequest:
-      description: 'Bad Request'
+      description: "Bad Request"
     404NotFound:
-      description: 'Not Found'
+      description: "Not Found"
     500InternalServerError:
-      description: 'Internal Server Error'
+      description: "Internal Server Error"
